@@ -4,11 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title id="page-title">Catálogo Exclusivo 🎃 Edición Halloween</title>
-    <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <!-- FontAwesome Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <!-- Google Fonts Inter y Creepster para toques terroríficos -->
     <link href="https://fonts.googleapis.com/css2?family=Creepster&family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <script>
         tailwind.config = {
@@ -33,7 +30,6 @@
 </head>
 <body id="page-body" class="bg-slate-950 text-slate-100 font-sans min-h-full flex flex-col relative bg-cover bg-center bg-fixed bg-no-repeat">
 
-    <!-- Murciélagos decorativos flotantes de fondo -->
     <div class="fixed inset-0 pointer-events-none z-0 overflow-hidden opacity-20">
         <div class="absolute top-12 left-10 text-amber-500 text-3xl animate-bat"><i class="fa-solid fa-bat"></i></div>
         <div class="absolute top-40 right-16 text-purple-400 text-4xl animate-bat" style="animation-delay: 1s;"><i class="fa-solid fa-bat"></i></div>
@@ -42,7 +38,6 @@
 
     <div class="relative z-10 flex flex-col min-h-full flex-1">
         
-        <!-- Barra superior temática -->
         <div class="bg-gradient-to-r from-orange-600 via-purple-700 to-amber-600 text-white text-xs py-2.5 px-4 shadow-lg flex items-center justify-between border-b border-orange-500/30">
             <div class="max-w-7xl mx-auto w-full flex items-center justify-between text-center font-medium">
                 <span class="flex items-center"><i class="fa-solid fa-ghost mr-1.5 text-amber-300 animate-bounce"></i> ¡Ofertas Espeluznantes de Halloween por Tiempo Limitado! 🎃</span>
@@ -50,7 +45,6 @@
             </div>
         </div>
 
-        <!-- Header / Navbar de Halloween -->
         <header class="bg-slate-900/90 backdrop-blur-md border-b border-purple-900/50 sticky top-0 z-30 shadow-xl transition-all">
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
                 <div class="flex items-center space-x-3 cursor-pointer" onclick="switchScreen('home')">
@@ -64,15 +58,9 @@
                 </div>
 
                 <nav class="hidden md:flex items-center space-x-1 bg-slate-950/80 p-1 rounded-xl border border-purple-800/40">
-                    <button onclick="switchScreen('home')" id="nav-btn-home" class="px-4 py-1.5 rounded-lg text-xs font-bold transition bg-orange-500 text-slate-950 shadow-sm">
-                        <i class="fa-solid fa-house mr-1.5"></i> Inicio
-                    </button>
-                    <button onclick="switchScreen('products')" id="nav-btn-products" class="px-4 py-1.5 rounded-lg text-xs font-bold transition text-slate-300 hover:text-orange-400">
-                        <i class="fa-solid fa-spider mr-1.5"></i> Productos
-                    </button>
-                    <button onclick="switchScreen('catalog')" id="nav-btn-catalog" class="px-4 py-1.5 rounded-lg text-xs font-bold transition text-slate-300 hover:text-orange-400">
-                        <i class="fa-solid fa-book-skull mr-1.5 text-purple-400"></i> Catálogos Virtuales
-                    </button>
+                    <button onclick="switchScreen('home')" id="nav-btn-home" class="px-4 py-1.5 rounded-lg text-xs font-bold transition bg-orange-500 text-slate-950 shadow-sm"><i class="fa-solid fa-house mr-1.5"></i> Inicio</button>
+                    <button onclick="switchScreen('products')" id="nav-btn-products" class="px-4 py-1.5 rounded-lg text-xs font-bold transition text-slate-300 hover:text-orange-400"><i class="fa-solid fa-spider mr-1.5"></i> Productos</button>
+                    <button onclick="switchScreen('catalog')" id="nav-btn-catalog" class="px-4 py-1.5 rounded-lg text-xs font-bold transition text-slate-300 hover:text-orange-400"><i class="fa-solid fa-book-skull mr-1.5 text-purple-400"></i> Catálogos Virtuales</button>
                 </nav>
 
                 <div class="flex items-center space-x-3">
@@ -91,30 +79,21 @@
             </div>
         </header>
 
-        <!-- ==================== PANTALLA 1: INICIO ==================== -->
+        <!-- PANTALLA 1: INICIO -->
         <div id="screen-home" class="flex flex-col flex-1">
-            
-            <!-- Banner Principal Completo -->
             <div id="cover-banner-section" class="relative w-full overflow-hidden shadow-2xl bg-slate-950 flex items-center justify-center border-b border-purple-900/50">
                 <img id="cover-bg-image" src="" alt="Portada" class="w-full h-auto max-h-[85vh] object-contain block mx-auto transition duration-500">
-                
                 <div class="absolute inset-0 bg-slate-950/30 flex flex-col justify-end pb-6 sm:pb-10 px-4 z-20">
                     <div class="max-w-5xl mx-auto text-center space-y-2 w-full">
-                        <span class="px-3.5 py-1.5 rounded-full text-[11px] font-bold bg-orange-500/90 text-slate-950 backdrop-blur-md shadow-md uppercase tracking-wider inline-block font-bold">🎃 ¡Truco o Oferta! Bienvenidos</span>
-                        
+                        <span class="px-3.5 py-1.5 rounded-full text-[11px] font-bold bg-orange-500/90 text-slate-950 backdrop-blur-md shadow-md uppercase tracking-wider inline-block">🎃 ¡Truco o Oferta! Bienvenidos</span>
                         <div class="pt-2 flex flex-wrap gap-3 justify-center">
-                            <button onclick="switchScreen('products')" class="px-5 py-2.5 bg-gradient-to-r from-orange-500 to-amber-500 hover:from-orange-600 hover:to-amber-600 text-slate-950 font-bold text-xs sm:text-sm rounded-xl shadow-xl transition transform hover:scale-105 flex items-center">
-                                <i class="fa-solid fa-ghost mr-2"></i> Ver Ofertas Especiales
-                            </button>
-                            <button onclick="switchScreen('catalog')" class="px-5 py-2.5 bg-slate-900/90 text-slate-100 hover:bg-slate-800 border border-purple-500/40 font-bold text-xs sm:text-sm rounded-xl shadow-xl transition transform hover:scale-105 flex items-center">
-                                <i class="fa-solid fa-book-open mr-2 text-purple-400"></i> Catálogos Virtuales
-                            </button>
+                            <button onclick="switchScreen('products')" class="px-5 py-2.5 bg-gradient-to-r from-orange-500 to-amber-500 hover:from-orange-600 hover:to-amber-600 text-slate-950 font-bold text-xs sm:text-sm rounded-xl shadow-xl transition transform hover:scale-105 flex items-center"><i class="fa-solid fa-ghost mr-2"></i> Ver Ofertas Especiales</button>
+                            <button onclick="switchScreen('catalog')" class="px-5 py-2.5 bg-slate-900/90 text-slate-100 hover:bg-slate-800 border border-purple-500/40 font-bold text-xs sm:text-sm rounded-xl shadow-xl transition transform hover:scale-105 flex items-center"><i class="fa-solid fa-book-open mr-2 text-purple-400"></i> Catálogos Virtuales</button>
                         </div>
                     </div>
                 </div>
             </div>
 
-            <!-- Banner de Oferta Destacada Temática -->
             <div class="max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-10">
                 <div id="oferta-banner-card" class="bg-gradient-to-r from-purple-900 via-slate-900 to-orange-950 rounded-3xl p-6 sm:p-8 text-white shadow-2xl relative overflow-hidden flex flex-col md:flex-row items-center justify-between gap-6 border border-orange-500/30">
                     <div class="flex items-center space-x-6 z-10 w-full md:w-auto">
@@ -122,22 +101,18 @@
                         <div class="space-y-2">
                             <span class="px-3 py-1 rounded-full text-xs font-extrabold bg-orange-500 text-slate-950 uppercase tracking-widest shadow-md">🎃 Oferta Espeluznante del Mes</span>
                             <h3 id="oferta-title" class="text-2xl sm:text-3xl font-extrabold tracking-tight drop-shadow-md text-orange-200">Cargando Oferta...</h3>
-                            <div class="flex items-center space-x-3">
-                                <span id="oferta-price" class="text-2xl sm:text-3xl font-black text-amber-300 drop-shadow">S/ 0.00</span>
-                            </div>
+                            <div class="flex items-center space-x-3"><span id="oferta-price" class="text-2xl sm:text-3xl font-black text-amber-300 drop-shadow">S/ 0.00</span></div>
                             <p class="text-xs text-purple-200 flex items-center font-medium"><i class="fa-solid fa-skull mr-1.5 text-orange-400"></i> <span id="oferta-duration">Válido hasta agotar stock</span></p>
                         </div>
                     </div>
                     <div class="z-10 w-full md:w-auto flex flex-col items-center md:items-end space-y-3">
-                        <button onclick="switchScreen('products')" class="px-8 py-3.5 rounded-xl bg-orange-500 hover:bg-orange-600 text-slate-950 font-extrabold text-sm shadow-xl transition transform hover:scale-105 text-center">
-                            <i class="fa-solid fa-cart-shopping mr-2"></i> ¡Comprar Oferta!
-                        </button>
+                        <button onclick="switchScreen('products')" class="px-8 py-3.5 rounded-xl bg-orange-500 hover:bg-orange-600 text-slate-950 font-extrabold text-sm shadow-xl transition transform hover:scale-105 text-center"><i class="fa-solid fa-cart-shopping mr-2"></i> ¡Comprar Oferta!</button>
                     </div>
                 </div>
             </div>
         </div>
 
-        <!-- ==================== PANTALLA 2: PRODUCTOS ==================== -->
+        <!-- PANTALLA 2: PRODUCTOS -->
         <div id="screen-products" class="flex flex-col flex-1 hidden max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-8 gap-6">
             <div class="bg-slate-900/90 backdrop-blur-md p-4 rounded-2xl border border-purple-900/40 shadow-xl flex flex-col md:flex-row gap-4 items-center justify-between">
                 <div class="relative w-full md:w-80">
@@ -172,13 +147,11 @@
             </div>
         </div>
 
-        <!-- ==================== PANTALLA 3: CATÁLOGOS ==================== -->
+        <!-- PANTALLA 3: CATÁLOGOS -->
         <div id="screen-catalog" class="flex flex-col flex-1 hidden max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-8 gap-6">
             <div class="bg-slate-900/90 backdrop-blur-md p-6 rounded-3xl border border-purple-900/40 shadow-xl space-y-6">
                 <div class="flex items-center space-x-3 border-b border-purple-900/40 pb-4">
-                    <div class="w-12 h-12 bg-purple-950 text-orange-400 rounded-2xl flex items-center justify-center text-xl font-bold shadow-sm">
-                        <i class="fa-solid fa-book-skull"></i>
-                    </div>
+                    <div class="w-12 h-12 bg-purple-950 text-orange-400 rounded-2xl flex items-center justify-center text-xl font-bold shadow-sm"><i class="fa-solid fa-book-skull"></i></div>
                     <div>
                         <h2 class="text-xl font-bold text-orange-400">Catálogos Virtuales Digitales</h2>
                         <p class="text-xs text-purple-300">Explora la revista interactiva o folleto actualizado.</p>
@@ -188,7 +161,6 @@
             </div>
         </div>
 
-        <!-- Footer Temático -->
         <footer class="bg-slate-950 text-slate-400 border-t border-purple-900/40 py-10 px-4 sm:px-6 lg:px-8 mt-12">
             <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8 text-center md:text-left">
                 <div>
@@ -203,13 +175,13 @@
                 </div>
                 <div class="flex flex-col items-center md:items-end justify-center">
                     <p class="text-xs text-slate-400">© 2026 Todos los derechos reservados. 🎃</p>
-                    <p class="text-[11px] text-orange-400 font-medium mt-1">Sincronización en tiempo real con Firebase</p>
+                    <p class="text-[11px] text-orange-400 font-medium mt-1">Sincronización en tiempo real con Firebase[cite: 2]</p>
                 </div>
             </div>
         </footer>
     </div>
 
-    <!-- Chatbot Interactivo en Pantalla con Estilo de Halloween -->
+    <!-- CHATBOT -->
     <div class="fixed bottom-6 right-6 z-40 flex flex-col items-end">
         <div id="chatbot-window" class="hidden mb-3 w-80 sm:w-96 bg-slate-900 rounded-2xl shadow-2xl border border-purple-800/60 overflow-hidden transform transition-all duration-300 flex flex-col max-h-[500px]">
             <div class="bg-gradient-to-r from-orange-600 to-purple-700 text-white px-4 py-3 flex items-center justify-between">
@@ -222,51 +194,36 @@
                 </div>
                 <button onclick="toggleChatbot()" class="text-white/80 hover:text-white transition w-7 h-7 flex items-center justify-center rounded-lg"><i class="fa-solid fa-xmark text-lg"></i></button>
             </div>
-            
             <div id="chatbot-messages" class="p-4 bg-slate-950 h-64 overflow-y-auto space-y-3 text-xs flex flex-col">
-                <div class="bg-slate-900 p-3 rounded-xl rounded-tl-none shadow-sm border border-purple-900/50 text-slate-200 self-start">
-                    ¡Hola! 🎃 Soy tu asistente de Halloween. Haz clic en una pregunta rápida o escribe tu duda:
-                </div>
+                <div class="bg-slate-900 p-3 rounded-xl rounded-tl-none shadow-sm border border-purple-900/50 text-slate-200 self-start">¡Hola! 🎃 Soy tu asistente. Haz clic en una pregunta rápida o escribe tu duda:</div>
             </div>
-
             <div class="p-2 bg-slate-900 border-t border-purple-900/40 flex flex-wrap gap-1.5 justify-center">
                 <button onclick="quickChatResponse('métodos de pago')" class="px-2.5 py-1 bg-slate-950 hover:bg-purple-950 text-orange-400 border border-orange-500/30 rounded-lg text-[11px] font-semibold transition">💳 Métodos de Pago</button>
                 <button onclick="quickChatResponse('envíos')" class="px-2.5 py-1 bg-slate-950 hover:bg-purple-950 text-orange-400 border border-orange-500/30 rounded-lg text-[11px] font-semibold transition">🚚 Costo de Envíos</button>
                 <button onclick="quickChatResponse('oferta')" class="px-2.5 py-1 bg-slate-950 hover:bg-purple-950 text-orange-400 border border-orange-500/30 rounded-lg text-[11px] font-semibold transition">🔥 Ofertas</button>
             </div>
-
             <div class="p-3 bg-slate-900 border-t border-purple-900/40 flex items-center space-x-2">
                 <input type="text" id="chatbot-input" onkeypress="handleChatKeyPress(event)" placeholder="Escribe tu pregunta..." class="flex-1 bg-slate-950 border border-purple-900/50 rounded-xl px-3 py-2 text-xs text-slate-100 placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-orange-500">
                 <button onclick="sendUserChatbotMessage()" class="bg-orange-500 hover:bg-orange-600 text-slate-950 w-9 h-9 rounded-xl flex items-center justify-center transition shadow-sm font-bold"><i class="fa-solid fa-paper-plane text-xs"></i></button>
             </div>
         </div>
-
-        <button onclick="toggleChatbot()" class="bg-gradient-to-tr from-orange-600 to-amber-500 text-slate-950 w-14 h-14 rounded-full flex items-center justify-center shadow-2xl transition transform hover:scale-110 relative group border-2 border-orange-400/50" title="Abrir Asistente Virtual">
-            <i class="fa-solid fa-ghost text-2xl"></i>
-            <span class="absolute -top-1 -right-1 bg-purple-600 text-white text-[10px] font-bold px-1.5 py-0.5 rounded-full animate-bounce">Bot</span>
-        </button>
+        <button onclick="toggleChatbot()" class="bg-gradient-to-tr from-orange-600 to-amber-500 text-slate-950 w-14 h-14 rounded-full flex items-center justify-center shadow-2xl transition transform hover:scale-110 relative group border-2 border-orange-400/50" title="Abrir Asistente Virtual"><i class="fa-solid fa-ghost text-2xl"></i><span class="absolute -top-1 -right-1 bg-purple-600 text-white text-[10px] font-bold px-1.5 py-0.5 rounded-full animate-bounce">Bot</span></button>
     </div>
 
-    <!-- Modal del Carrito con Opción de Eliminar Producto -->
+    <!-- MODAL CARRITO -->
     <div id="cart-modal" class="fixed inset-0 z-50 flex items-center justify-center bg-slate-950/80 backdrop-blur-sm hidden">
         <div class="bg-slate-900 text-slate-100 rounded-2xl max-w-lg w-full mx-4 shadow-2xl border border-purple-900/50 overflow-hidden transform transition-all flex flex-col max-h-[92vh]">
             <div class="px-6 py-4 border-b border-purple-900/40 flex items-center justify-between bg-slate-950">
                 <h3 class="text-base font-bold text-orange-400"><i class="fa-solid fa-bag-shopping mr-2"></i> Confirmar Pedido de Halloween 🎃</h3>
                 <button onclick="closeCartModal()" class="text-slate-400 hover:text-slate-200 w-8 h-8 rounded-lg flex items-center justify-center transition"><i class="fa-solid fa-xmark text-lg"></i></button>
             </div>
-            
             <div class="p-6 overflow-y-auto flex-1 space-y-4">
                 <div id="cart-items-container" class="divide-y divide-purple-900/30"></div>
                 <div id="cart-empty-msg" class="text-center py-8 text-slate-400 text-sm">Tu pedido está vacío. Agrega productos desde la tienda.</div>
-
-                <!-- Alerta de Oferta Dinámica por Monto -->
+                
                 <div id="cart-amount-promo" class="hidden bg-gradient-to-r from-purple-950 to-orange-950 border border-orange-500/40 rounded-2xl p-4 shadow-sm space-y-3">
-                    <div class="flex items-center space-x-2 text-orange-300 font-bold text-xs">
-                        <i class="fa-solid fa-gift text-orange-400 text-base animate-bounce"></i>
-                        <span id="promo-title">¡Truco o Regalo! Por superar los S/ 50...</span>
-                    </div>
-                    <div id="promo-body" class="flex items-center justify-between bg-slate-900 p-2.5 rounded-xl border border-purple-900/40">
-                    </div>
+                    <div class="flex items-center space-x-2 text-orange-300 font-bold text-xs"><i class="fa-solid fa-gift text-orange-400 text-base animate-bounce"></i><span id="promo-title">¡Truco o Regalo! Por superar los S/ 50...</span></div>
+                    <div id="promo-body" class="flex items-center justify-between bg-slate-900 p-2.5 rounded-xl border border-purple-900/40"></div>
                 </div>
 
                 <div id="cart-checkout-form" class="hidden space-y-3 bg-slate-950 p-4 rounded-xl border border-purple-900/40">
@@ -283,12 +240,8 @@
                     </select>
                 </div>
             </div>
-
             <div class="p-6 border-t border-purple-900/40 bg-slate-950 space-y-3">
-                <div class="flex items-center justify-between text-base font-bold text-slate-100">
-                    <span>Total estimado:</span>
-                    <span id="cart-total" class="text-orange-400 text-2xl font-black">S/ 0.00</span>
-                </div>
+                <div class="flex items-center justify-between text-base font-bold text-slate-100"><span>Total estimado:</span><span id="cart-total" class="text-orange-400 text-2xl font-black">S/ 0.00</span></div>
                 <button onclick="sendOrderWhatsApp()" id="btn-whatsapp" disabled class="w-full py-3.5 rounded-xl bg-orange-500 hover:bg-orange-600 text-slate-950 text-sm font-extrabold shadow-lg transition flex items-center justify-center space-x-2 disabled:opacity-40 disabled:cursor-not-allowed">
                     <i class="fa-brands fa-whatsapp text-xl"></i><span>Enviar Pedido Directo a WhatsApp</span>
                 </button>
@@ -298,10 +251,9 @@
 
     <div id="toast-container" class="fixed bottom-5 right-5 z-50 flex flex-col space-y-3 pointer-events-none"></div>
 
-    <!-- Firebase SDKs & Lógica -->
     <script type="module">
         import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-app.js";
-        import { getFirestore, collection, doc, onSnapshot, addDoc } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
+        import { getFirestore, collection, doc, onSnapshot, addDoc, updateDoc, increment } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
 
         window.db = null;
         window.products = [];
@@ -334,7 +286,6 @@
             const btnHome = document.getElementById('nav-btn-home');
             const btnProd = document.getElementById('nav-btn-products');
             const btnCat = document.getElementById('nav-btn-catalog');
-
             const activeDesktop = "px-4 py-1.5 rounded-lg text-xs font-bold transition bg-orange-500 text-slate-950 shadow-sm";
             const inactiveDesktop = "px-4 py-1.5 rounded-lg text-xs font-bold transition text-slate-300 hover:text-orange-400";
 
@@ -411,14 +362,9 @@
             }
         }
 
-        // --- Chatbot Interactivo ---
         window.toggleChatbot = function() { document.getElementById('chatbot-window').classList.toggle('hidden'); };
         window.handleChatKeyPress = function(e) { if (e.key === 'Enter') sendUserChatbotMessage(); };
-
-        window.quickChatResponse = function(query) {
-            document.getElementById('chatbot-input').value = query;
-            sendUserChatbotMessage();
-        };
+        window.quickChatResponse = function(query) { document.getElementById('chatbot-input').value = query; sendUserChatbotMessage(); };
 
         window.sendUserChatbotMessage = function() {
             const input = document.getElementById('chatbot-input');
@@ -427,47 +373,47 @@
             appendChatMessage(text, 'user');
             input.value = '';
 
-            const userQuery = text.toLowerCase();
-            const match = window.chatbotInteractions.find(i => userQuery.includes(i.q.toLowerCase()) || i.q.toLowerCase().includes(userQuery));
+            const normalize = (str) => str.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+            const userQuery = normalize(text);
+            const match = window.chatbotInteractions.find(i => {
+                const qNorm = normalize(i.q);
+                return userQuery.includes(qNorm) || qNorm.includes(userQuery);
+            });
 
             setTimeout(() => {
                 if (match) {
                     appendChatMessage(match.a, 'bot');
-                } else if (userQuery.includes('pago') || userQuery.includes('métodos de pago')) {
-                    appendChatMessage("💳 Aceptamos Yape, Plin, BCP e Interbank, y efectivo contraentrega.", 'bot');
-                } else if (userQuery.includes('envío') || userQuery.includes('envios')) {
-                    appendChatMessage("🚚 Hacemos envíos directos a domicilio con regalos sorpresa por temporada.", 'bot');
+                } else if (userQuery.includes('hola') || userQuery.includes('buenas')) {
+                    appendChatMessage("¡Hola! 👋 Qué gusto saludarte en nuestra edición de Halloween. ¿En qué puedo ayudarte hoy?", 'bot');
+                } else if (userQuery.includes('pago') || userQuery.includes('yape')) {
+                    appendChatMessage("💳 Aceptamos Yape, Plin, transferencias bancarias (BCP, Interbank) y efectivo contraentrega.", 'bot');
+                } else if (userQuery.includes('envio') || userQuery.includes('delivery')) {
+                    appendChatMessage("🚚 Hacemos envíos rápidos a domicilio y entregas coordinadas con sorpresas por temporada.", 'bot');
                 } else if (userQuery.includes('oferta') || userQuery.includes('promocion')) {
-                    appendChatMessage("🎃 Revisa el banner promocional de inicio para descubrir la oferta estelar de Halloween.", 'bot');
+                    appendChatMessage("🎃 Tenemos descuentos espeluznantes y regalos en compras mayores a S/ 50. ¡Revisa el inicio!", 'bot');
+                } else if (userQuery.includes('gracias')) {
+                    appendChatMessage("¡Con mucho gusto! 🎃 Estamos para servirte. ¿Hay algo más en lo que te pueda colaborar?", 'bot');
                 } else {
-                    appendChatMessage("Entendido. Puedes hablar con nuestra asesora por WhatsApp para coordinar más detalles.", 'bot', true);
+                    appendChatMessage("¡Entendido! Si deseas coordinar detalles específicos de tu pedido de forma personalizada, presiona abajo para comunicarte con nuestra asesora por WhatsApp.", 'bot', true);
                 }
-            }, 500);
+            }, 600);
         };
 
         function appendChatMessage(text, sender, showWhatsappBtn = false) {
             const container = document.getElementById('chatbot-messages');
             const msg = document.createElement('div');
             msg.className = sender === 'user' ? "bg-orange-500 text-slate-950 font-semibold p-3 rounded-xl rounded-tr-none shadow-sm max-w-[85%] self-end" : "bg-slate-900 p-3 rounded-xl rounded-tl-none shadow-sm border border-purple-900/50 text-slate-200 max-w-[85%] self-start";
-            
             let htmlContent = `<p>${text}</p>`;
             if (showWhatsappBtn) {
-                htmlContent += `
-                    <button onclick="window.open('https://wa.me/${window.chatbotPhone}?text=Hola,%20tengo%20una%20consulta', '_blank')" class="mt-2.5 w-full py-2 bg-orange-500 hover:bg-orange-600 text-slate-950 font-bold rounded-lg text-[11px] transition flex items-center justify-center space-x-1.5">
-                        <i class="fa-brands fa-whatsapp text-sm"></i>
-                        <span>Hablar en WhatsApp</span>
-                    </button>
-                `;
+                htmlContent += `<button onclick="window.open('https://wa.me/${window.chatbotPhone}?text=Hola,%20tengo%20una%20consulta', '_blank')" class="mt-2.5 w-full py-2 bg-orange-500 hover:bg-orange-600 text-slate-950 font-bold rounded-lg text-[11px] transition flex items-center justify-center space-x-1.5"><i class="fa-brands fa-whatsapp text-sm"></i><span>Hablar con Asesora en WhatsApp</span></button>`;
             }
-            
             msg.innerHTML = htmlContent;
             container.appendChild(msg);
             container.scrollTop = container.scrollHeight;
         }
 
         function loadProductsCatalog() {
-            const productsRef = collection(window.db, 'productos');
-            onSnapshot(productsRef, (snapshot) => {
+            onSnapshot(collection(window.db, 'productos'), (snapshot) => {
                 const list = [];
                 snapshot.forEach(docSnap => list.push({ id: docSnap.id, ...docSnap.data() }));
                 window.products = list;
@@ -503,12 +449,8 @@
             filtered.forEach(p => {
                 const stock = Number(p.quantity);
                 let badgeHTML = '<span class="px-2.5 py-1 rounded-full text-[11px] font-bold bg-orange-500 text-slate-950 shadow-md">Disponible</span>';
-                
-                if (stock === 0) {
-                    badgeHTML = '<span class="px-2.5 py-1 rounded-full text-[11px] font-bold bg-purple-700 text-white shadow-md">Agotado</span>';
-                } else if (stock <= 3) {
-                    badgeHTML = '<span class="px-2.5 py-1 rounded-full text-[11px] font-bold bg-amber-400 text-slate-950 shadow-md animate-pulse">¡Últimas unidades!</span>';
-                }
+                if (stock === 0) badgeHTML = '<span class="px-2.5 py-1 rounded-full text-[11px] font-bold bg-purple-700 text-white shadow-md">Agotado</span>';
+                else if (stock <= 3) badgeHTML = '<span class="px-2.5 py-1 rounded-full text-[11px] font-bold bg-amber-400 text-slate-950 shadow-md animate-pulse">¡Últimas unidades!</span>';
 
                 const card = document.createElement('div');
                 card.className = "bg-slate-900 rounded-2xl border border-purple-900/40 shadow-xl overflow-hidden flex flex-col justify-between hover:border-orange-500/50 transition duration-300 transform hover:-translate-y-1 group";
@@ -521,10 +463,7 @@
                         </div>
                         <div class="p-5 space-y-2">
                             <h3 class="font-bold text-slate-100 text-base leading-snug line-clamp-1 group-hover:text-orange-400 transition">${p.name}</h3>
-                            <div class="flex items-center justify-between">
-                                <span class="text-2xl font-extrabold text-orange-400">S/ ${Number(p.price).toFixed(2)}</span>
-                                <span class="text-xs font-semibold text-slate-400">Stock: ${stock}</span>
-                            </div>
+                            <div class="flex items-center justify-between"><span class="text-2xl font-extrabold text-orange-400">S/ ${Number(p.price).toFixed(2)}</span><span class="text-xs font-semibold text-slate-400">Stock: ${stock}</span></div>
                         </div>
                     </div>
                     <div class="p-5 pt-0">
@@ -601,19 +540,13 @@
                 row.innerHTML = `
                     <div class="flex items-center space-x-3">
                         <img src="${item.imageUrl}" class="w-12 h-12 rounded-lg object-cover bg-slate-950 border border-purple-900/40">
-                        <div>
-                            <h4 class="text-sm font-bold text-slate-100 line-clamp-1">${item.name}</h4>
-                            <p class="text-xs text-orange-400">S/ ${Number(item.price).toFixed(2)} c/u</p>
-                        </div>
+                        <div><h4 class="text-sm font-bold text-slate-100 line-clamp-1">${item.name}</h4><p class="text-xs text-orange-400">S/ ${Number(item.price).toFixed(2)} c/u</p></div>
                     </div>
                     <div class="flex items-center space-x-2">
                         <button onclick="updateCartQty('${item.id}', -1)" class="w-7 h-7 bg-slate-800 hover:bg-slate-700 rounded-lg flex items-center justify-center text-xs font-bold transition text-slate-200"><i class="fa-solid fa-minus"></i></button>
                         <span class="text-sm font-bold w-6 text-center text-slate-100">${item.qty}</span>
                         <button onclick="updateCartQty('${item.id}', 1)" class="w-7 h-7 bg-slate-800 hover:bg-slate-700 rounded-lg flex items-center justify-center text-xs font-bold transition text-slate-200"><i class="fa-solid fa-plus"></i></button>
-                        
-                        <button onclick="removeFromCart('${item.id}')" title="Eliminar producto" class="w-7 h-7 bg-purple-950/80 hover:bg-purple-900 text-rose-400 rounded-lg flex items-center justify-center text-xs transition ml-1">
-                            <i class="fa-solid fa-trash-can"></i>
-                        </button>
+                        <button onclick="removeFromCart('${item.id}')" title="Eliminar producto" class="w-7 h-7 bg-purple-950/80 hover:bg-purple-900 text-rose-400 rounded-lg flex items-center justify-center text-xs transition ml-1"><i class="fa-solid fa-trash-can"></i></button>
                     </div>
                 `;
                 container.appendChild(row);
@@ -626,21 +559,11 @@
                     promoContainer.classList.remove('hidden');
                     document.getElementById('promo-title').innerText = `🎉 ¡Superaste los S/ 50! Regalito o descuento especial:`;
                     document.getElementById('promo-body').innerHTML = `
-                        <div class="flex items-center space-x-2">
-                            <img src="${promoProduct.imageUrl}" class="w-10 h-10 rounded-lg object-cover">
-                            <div>
-                                <p class="text-xs font-bold text-slate-100">${promoProduct.name}</p>
-                                <p class="text-[11px] text-orange-400 font-bold">¡Oferta de Halloween!</p>
-                            </div>
-                        </div>
+                        <div class="flex items-center space-x-2"><img src="${promoProduct.imageUrl}" class="w-10 h-10 rounded-lg object-cover"><div><p class="text-xs font-bold text-slate-100">${promoProduct.name}</p><p class="text-[11px] text-orange-400 font-bold">¡Oferta de Halloween!</p></div></div>
                         <button onclick="addToCart('${promoProduct.id}')" class="px-3 py-1.5 bg-orange-500 hover:bg-orange-600 text-slate-950 text-xs font-bold rounded-xl transition shadow-sm">Agregar</button>
                     `;
-                } else {
-                    promoContainer.classList.add('hidden');
-                }
-            } else {
-                promoContainer.classList.add('hidden');
-            }
+                } else { promoContainer.classList.add('hidden'); }
+            } else { promoContainer.classList.add('hidden'); }
 
             totalEl.innerText = `S/ ${totalPrice.toFixed(2)}`;
         }
@@ -668,7 +591,14 @@
                     address: address,
                     createdAt: new Date().toISOString()
                 });
-            } catch(e) { console.error(e); }
+
+                for (const item of window.cart) {
+                    const productRef = doc(window.db, 'productos', item.id);
+                    await updateDoc(productRef, {
+                        quantity: increment(-item.qty)
+                    });
+                }
+            } catch(e) { console.error("Error al registrar el pedido o descontar stock:", e); }
 
             let mensaje = `*¡Hola! Deseo realizar el siguiente pedido (Halloween 🎃):*%0A%0A`;
             mensaje += `👤 *Cliente:* ${name}%0A`;
