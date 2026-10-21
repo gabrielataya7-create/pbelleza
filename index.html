@@ -25,7 +25,7 @@
 
     <div class="relative z-10 flex flex-col min-h-full flex-1">
         
-        <!-- Barra superior automatizada -->
+        <!-- Barra superior -->
         <div class="bg-emerald-700 text-white text-xs py-2 px-4 overflow-hidden shadow-inner flex items-center justify-between">
             <div class="max-w-7xl mx-auto w-full flex items-center justify-between text-center font-medium">
                 <span class="flex items-center"><i class="fa-solid fa-bolt mr-1.5 text-amber-300 animate-pulse"></i> ¡Descuentos en tiempo real y envíos rápidos!</span>
@@ -187,7 +187,7 @@
         </footer>
     </div>
 
-    <!-- Chatbot Automatizado -->
+    <!-- Chatbot Automatizado e Interactivo en Pantalla -->
     <div class="fixed bottom-6 right-6 z-40 flex flex-col items-end">
         <div id="chatbot-window" class="hidden mb-3 w-80 sm:w-96 bg-white rounded-2xl shadow-2xl border border-slate-200 overflow-hidden transform transition-all duration-300 flex flex-col max-h-[500px]">
             <div class="bg-emerald-600 text-white px-4 py-3 flex items-center justify-between">
@@ -203,14 +203,15 @@
             
             <div id="chatbot-messages" class="p-4 bg-slate-50 h-64 overflow-y-auto space-y-3 text-xs flex flex-col">
                 <div class="bg-white p-3 rounded-xl rounded-tl-none shadow-sm border border-slate-100 max-w-[85%] text-slate-700 self-start">
-                    ¡Hola! 👋 Elige una opción rápida o escribe tu consulta:
+                    ¡Hola! 👋 Soy tu asistente interactivo. Elige una pregunta rápida o escribe tu consulta directamente aquí:
                 </div>
             </div>
 
+            <!-- Botones de consulta rápida -->
             <div class="p-2 bg-slate-100 border-t border-slate-200 flex flex-wrap gap-1.5 justify-center">
                 <button onclick="quickChatResponse('métodos de pago')" class="px-2.5 py-1 bg-white hover:bg-emerald-50 text-emerald-700 border border-emerald-200 rounded-lg text-[11px] font-semibold transition">💳 Métodos de Pago</button>
                 <button onclick="quickChatResponse('envíos')" class="px-2.5 py-1 bg-white hover:bg-emerald-50 text-emerald-700 border border-emerald-200 rounded-lg text-[11px] font-semibold transition">🚚 Costo de Envíos</button>
-                <button onclick="quickChatResponse('oferta')" class="px-2.5 py-1 bg-white hover:bg-emerald-50 text-emerald-700 border border-emerald-200 rounded-lg text-[11px] font-semibold transition">🔥 Ofertas del día</button>
+                <button onclick="quickChatResponse('oferta')" class="px-2.5 py-1 bg-white hover:bg-emerald-50 text-emerald-700 border border-emerald-200 rounded-lg text-[11px] font-semibold transition">🔥 Ofertas</button>
             </div>
 
             <div class="p-3 bg-white border-t border-slate-100 flex items-center space-x-2">
@@ -225,7 +226,7 @@
         </button>
     </div>
 
-    <!-- Modal Avanzado del Carrito con Oferta por Monto -->
+    <!-- Modal Avanzado del Carrito con Opción de Eliminar Producto -->
     <div id="cart-modal" class="fixed inset-0 z-50 flex items-center justify-center bg-slate-900/60 backdrop-blur-sm hidden">
         <div class="bg-white rounded-2xl max-w-lg w-full mx-4 shadow-2xl border border-slate-100 overflow-hidden transform transition-all flex flex-col max-h-[92vh]">
             <div class="px-6 py-4 border-b border-slate-100 flex items-center justify-between bg-slate-50">
@@ -237,14 +238,13 @@
                 <div id="cart-items-container" class="divide-y divide-slate-100"></div>
                 <div id="cart-empty-msg" class="text-center py-8 text-slate-400 text-sm">Tu pedido está vacío. Agrega productos desde la tienda.</div>
 
-                <!-- 🎁 Alerta de Oferta Dinámica por Monto en el Carrito -->
+                <!-- Alerta de Oferta Dinámica por Monto -->
                 <div id="cart-amount-promo" class="hidden bg-gradient-to-r from-amber-50 to-orange-50 border border-amber-200 rounded-2xl p-4 shadow-sm space-y-3">
                     <div class="flex items-center space-x-2 text-amber-800 font-bold text-xs">
                         <i class="fa-solid fa-gift text-amber-600 text-base animate-bounce"></i>
                         <span id="promo-title">¡Felicidades! Por superar los S/ 50 en tu pedido...</span>
                     </div>
                     <div id="promo-body" class="flex items-center justify-between bg-white p-2.5 rounded-xl border border-amber-100">
-                        <!-- Se llena dinámicamente con JS -->
                     </div>
                 </div>
 
@@ -390,6 +390,7 @@
             }
         }
 
+        // --- Chatbot Interactivo Interno ---
         window.toggleChatbot = function() { document.getElementById('chatbot-window').classList.toggle('hidden'); };
         window.handleChatKeyPress = function(e) { if (e.key === 'Enter') sendUserChatbotMessage(); };
 
@@ -411,20 +412,34 @@
             setTimeout(() => {
                 if (match) {
                     appendChatMessage(match.a, 'bot');
+                } else if (userQuery.includes('pago') || userQuery.includes('métodos de pago')) {
+                    appendChatMessage("💳 Aceptamos Yape, Plin, Transferencias BCP e Interbank, y efectivo contraentrega.", 'bot');
+                } else if (userQuery.includes('envío') || userQuery.includes('envios')) {
+                    appendChatMessage("🚚 Realizamos envíos directos a domicilio y entregas coordinadas en puntos céntricos.", 'bot');
+                } else if (userQuery.includes('oferta') || userQuery.includes('promocion')) {
+                    appendChatMessage("🔥 Revisa la sección de ofertas en el inicio de la tienda para conocer el producto destacado del mes.", 'bot');
                 } else {
-                    appendChatMessage("Entendido. Te derivo directamente con nuestro asesor por WhatsApp para atenderte de forma personalizada.", 'bot');
-                    setTimeout(() => {
-                        window.open(`https://wa.me/${window.chatbotPhone}?text=${encodeURIComponent(text)}`, '_blank');
-                    }, 1000);
+                    appendChatMessage("Entendido. Si deseas coordinar detalles específicos de tu pedido, puedes comunicarte directo con nuestra asesora por WhatsApp.", 'bot', true);
                 }
             }, 500);
         };
 
-        function appendChatMessage(text, sender) {
+        function appendChatMessage(text, sender, showWhatsappBtn = false) {
             const container = document.getElementById('chatbot-messages');
             const msg = document.createElement('div');
             msg.className = sender === 'user' ? "bg-emerald-600 text-white p-3 rounded-xl rounded-tr-none shadow-sm max-w-[85%] self-end" : "bg-white p-3 rounded-xl rounded-tl-none shadow-sm border border-slate-100 max-w-[85%] text-slate-700 self-start";
-            msg.innerText = text;
+            
+            let htmlContent = `<p>${text}</p>`;
+            if (showWhatsappBtn) {
+                htmlContent += `
+                    <button onclick="window.open('https://wa.me/${window.chatbotPhone}?text=Hola,%20tengo%20una%20consulta', '_blank')" class="mt-2.5 w-full py-2 bg-emerald-600 hover:bg-emerald-700 text-white font-bold rounded-lg text-[11px] transition flex items-center justify-center space-x-1.5">
+                        <i class="fa-brands fa-whatsapp text-sm"></i>
+                        <span>Hablar con Asesora en WhatsApp</span>
+                    </button>
+                `;
+            }
+            
+            msg.innerHTML = htmlContent;
             container.appendChild(msg);
             container.scrollTop = container.scrollHeight;
         }
@@ -527,6 +542,13 @@
             updateCartUI();
         };
 
+        // Función para eliminar completamente un producto del carrito
+        window.removeFromCart = function(productId) {
+            window.cart = window.cart.filter(i => i.id !== productId);
+            updateCartUI();
+            showToast("Producto eliminado del pedido", "error");
+        };
+
         function updateCartUI() {
             const badge = document.getElementById('cart-badge');
             const container = document.getElementById('cart-items-container');
@@ -568,15 +590,18 @@
                         <button onclick="updateCartQty('${item.id}', -1)" class="w-7 h-7 bg-slate-100 hover:bg-slate-200 rounded-lg flex items-center justify-center text-xs font-bold transition"><i class="fa-solid fa-minus"></i></button>
                         <span class="text-sm font-bold w-6 text-center">${item.qty}</span>
                         <button onclick="updateCartQty('${item.id}', 1)" class="w-7 h-7 bg-slate-100 hover:bg-slate-200 rounded-lg flex items-center justify-center text-xs font-bold transition"><i class="fa-solid fa-plus"></i></button>
+                        
+                        <!-- Botón de Eliminar Producto -->
+                        <button onclick="removeFromCart('${item.id}')" title="Eliminar producto" class="w-7 h-7 bg-rose-50 hover:bg-rose-100 text-rose-600 rounded-lg flex items-center justify-center text-xs transition ml-1">
+                            <i class="fa-solid fa-trash-can"></i>
+                        </button>
                     </div>
                 `;
                 container.appendChild(row);
             });
 
-            // 🎁 Lógica de Oferta Dinámica según el Monto del Carrito (ej. si pasa de S/ 50.00)
             if (totalPrice >= 50 && window.products.length > 0) {
                 const cartIds = window.cart.map(i => i.id);
-                // Busca un producto que no esté en el carrito para sugerirlo como oferta adicional
                 const promoProduct = window.products.find(p => !cartIds.includes(p.id) && Number(p.quantity) > 0);
                 if (promoProduct) {
                     promoContainer.classList.remove('hidden');
@@ -586,7 +611,7 @@
                             <img src="${promoProduct.imageUrl}" class="w-10 h-10 rounded-lg object-cover">
                             <div>
                                 <p class="text-xs font-bold text-slate-900">${promoProduct.name}</p>
-                                <p class="text-[11px] text-rose-600 font-extrabold">¡Oferta por tu compra!</p>
+                                <p class="text-[11px] text-rose-600 font-extrabold">¡Oferta especial!</p>
                             </div>
                         </div>
                         <button onclick="addToCart('${promoProduct.id}')" class="px-3 py-1.5 bg-rose-600 hover:bg-rose-700 text-white text-xs font-bold rounded-xl transition shadow-sm">Agregar</button>
