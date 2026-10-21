@@ -262,6 +262,12 @@
         window.chatbotPhone = "51925255716";
         window.chatbotInteractions = [];
 
+        const defaultCatalogos = [
+            { title: "catalogo cyzone", url: "#", imgUrl: "https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?w=500&auto=format&fit=crop&q=60" },
+            { title: "catalogo esika", url: "#", imgUrl: "https://images.unsplash.com/photo-1512496015851-a90fb38ba796?w=500&auto=format&fit=crop&q=60" },
+            { title: "catalogo L'BEL", url: "#", imgUrl: "https://images.unsplash.com/photo-1596462502278-27bfdc403348?w=500&auto=format&fit=crop&q=60" }
+        ];
+
         const firebaseConfig = {
             apiKey: "AIzaSyCqcuMtFN-p4SVE61z2StGMgj1HwmJ8A3k",
             authDomain: "proyectog-e45c3.firebaseapp.com",
@@ -321,16 +327,19 @@
                     if (data.pageBgUrl) document.getElementById('page-body').style.backgroundImage = `url('${data.pageBgUrl}')`;
                     if (data.chatbotPhone) window.chatbotPhone = data.chatbotPhone;
                     if (data.chatbotInteractions) window.chatbotInteractions = data.chatbotInteractions;
-                    if (data.catalogos) {
-                        window.catalogos = data.catalogos;
-                        renderCatalogosScreen();
-                    }
+                    
+                    window.catalogos = (data.catalogos && data.catalogos.length > 0) ? data.catalogos : defaultCatalogos;
+                    renderCatalogosScreen();
+
                     if (data.oferta) {
                         document.getElementById('oferta-title').innerText = data.oferta.name || 'Gran Oferta del Día';
                         document.getElementById('oferta-price').innerText = `S/ ${Number(data.oferta.price || 0).toFixed(2)}`;
                         document.getElementById('oferta-duration').innerText = data.oferta.duration ? `Válido hasta: ${data.oferta.duration}` : 'Hasta agotar stock';
                         if (data.oferta.imageUrl) document.getElementById('oferta-img').src = data.oferta.imageUrl;
                     }
+                } else {
+                    window.catalogos = defaultCatalogos;
+                    renderCatalogosScreen();
                 }
             });
         }
@@ -339,27 +348,26 @@
             const container = document.getElementById('catalogos-list-container');
             if (!container) return;
             container.innerHTML = '';
-            if (window.catalogos.length === 0) {
-                container.innerHTML = '<p class="col-span-full text-center text-slate-400 text-xs py-12">No hay catálogos virtuales disponibles por el momento.</p>';
-            } else {
-                window.catalogos.forEach(cat => {
-                    const card = document.createElement('div');
-                    card.className = "bg-slate-900 border border-purple-900/40 rounded-2xl p-4 flex flex-col justify-between space-y-4 hover:shadow-lg transition";
-                    card.innerHTML = `
-                        <div class="relative h-64 bg-slate-950 rounded-xl overflow-hidden shadow-inner">
-                            <img src="${cat.imgUrl || 'https://placehold.co/300x400/f1f5f9/64748b?text=Portada'}" alt="${cat.title}" class="w-full h-full object-cover">
-                        </div>
-                        <div>
-                            <h4 class="text-sm font-bold text-orange-400">${cat.title}</h4>
-                            <p class="text-xs text-purple-300">Edición oficial digital</p>
-                        </div>
-                        <a href="${cat.url}" target="_blank" class="w-full py-2.5 bg-purple-700 hover:bg-purple-800 text-white rounded-xl text-xs font-bold shadow-md transition flex items-center justify-center space-x-2">
-                            <i class="fa-solid fa-book-open"></i> <span>Abrir Catálogo Interactivo</span>
-                        </a>
-                    `;
-                    container.appendChild(card);
-                });
-            }
+            
+            const listToRender = (window.catalogos && window.catalogos.length > 0) ? window.catalogos : defaultCatalogos;
+
+            listToRender.forEach(cat => {
+                const card = document.createElement('div');
+                card.className = "bg-slate-900 border border-purple-900/40 rounded-2xl p-4 flex flex-col justify-between space-y-4 hover:shadow-lg transition";
+                card.innerHTML = `
+                    <div class="relative h-64 bg-slate-950 rounded-xl overflow-hidden shadow-inner">
+                        <img src="${cat.imgUrl || 'https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?w=500&auto=format&fit=crop&q=60'}" alt="${cat.title}" class="w-full h-full object-cover">
+                    </div>
+                    <div>
+                        <h4 class="text-sm font-bold text-orange-400 capitalize">${cat.title}</h4>
+                        <p class="text-xs text-purple-300">Edición oficial digital</p>
+                    </div>
+                    <a href="${cat.url && cat.url !== '#' ? cat.url : '#'}" target="_blank" class="w-full py-2.5 bg-purple-700 hover:bg-purple-800 text-white rounded-xl text-xs font-bold shadow-md transition flex items-center justify-center space-x-2">
+                        <i class="fa-solid fa-book-open"></i> <span>Abrir Catálogo Interactivo</span>
+                    </a>
+                `;
+                container.appendChild(card);
+            });
         }
 
         window.toggleChatbot = function() { document.getElementById('chatbot-window').classList.toggle('hidden'); };
